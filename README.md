@@ -15,3 +15,48 @@ This project applies a neural network to classify the presence of heart disease 
 
 - Preprocessing (encoding, normalization) was done outside the model. To deploy this pipeline, the same preprocessing steps must be applied to new data.
 - For improved portability and robustness, consider integrating Keras preprocessing layers into the model pipeline.
+
+
+# Project 2: Classifying Abnormal ECGs: Neural Network Model (ecgScansNNClass)
+
+This project focuses on building a classification neural network to detect abnormal electrocardiogram (ECG) signals using the ECG5000 dataset. Each ECG signal is represented by 140 time-series data points, with a binary target variable:
+
+- **1** = Normal ECG
+- **0** = Abnormal ECG
+
+## Project Workflow
+
+### Packages & Data
+
+The project leverages key Python libraries including:
+- **TensorFlow**
+- **Keras**
+- **Pandas**
+- **NumPy**
+- **Matplotlib**
+- **Scikit-learn**
+
+The dataset is loaded from TensorFlow's public storage and consists of 4,998 samples and 141 columns (140 signal points + 1 target).
+
+### Data Preprocessing
+
+- The dataset contains only numerical values.
+- Data is split into training and testing sets using **stratified sampling** to preserve class balance.
+- **Normalization** is applied using the training set’s mean and standard deviation to standardize the features.
+
+### Model Architecture
+
+A simple feedforward neural network is implemented:
+
+- **Input layer** with 140 features
+- **1 hidden layer** with 16 ReLU-activated neurons
+- **Output layer** with 1 sigmoid-activated neuron for binary classification
+
+The model is compiled with:
+- **Adam optimizer**
+- **Binary cross-entropy loss**
+
+###  Training
+
+- The model is trained for 50 epochs with a batch size of 32 and a 20% validation split.
+- The training reaches over **99% accuracy** on the training and validation sets within a few epochs, indicating effective learning.
